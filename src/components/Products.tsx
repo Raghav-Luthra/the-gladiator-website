@@ -31,7 +31,7 @@ const Products: React.FC = () => {
       price: 650,
       originalPrice: 1000,
       color: 'from-pink-600 to-red-500',
-      icon: <Heart className="w-8 h-8" />,
+      icon: <src="/fusion.png"/>,
       features: ['Wild Berry Essence', 'Natural Fruit Extracts', 'Zero Artificial Colors', 'Crisp Carbonation'],
       rating: 4.8,
       reviews: 1247,
