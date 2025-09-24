@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Citrus, Heart, ShoppingCart, Star, Package, Truck, Shield } from 'lucide-react';
+import { Sparkles, ShoppingCart, Star, Package, Truck, Shield } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -9,7 +9,8 @@ interface Product {
   price: number;
   originalPrice?: number;
   color: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
+  image?: string;
   features: string[];
   rating: number;
   reviews: number;
@@ -27,11 +28,11 @@ const Products: React.FC = () => {
       id: 'strawberry',
       name: 'Strawberry Fusion 6-Pack',
       flavor: 'Sweet Berry Explosion',
-      description: 'A luscious blend of wild strawberries and exotic fruits that delivers an explosive taste experience. This 6-pack bundle ensures you have enough warrior fuel to conquer any challeng[...]
+      description: 'A luscious blend of wild strawberries and exotic fruits that delivers an explosive taste experience. This 6-pack bundle ensures you have enough warrior fuel to conquer any challenge.',
       price: 650,
       originalPrice: 1000,
       color: 'from-pink-600 to-red-500',
-      icon: <src="/fusion.png"/>,
+      image: 'https://raw.githubusercontent.com/Raghav-Luthra/the-gladiator-website/main/fusion.png',
       features: ['Wild Berry Essence', 'Natural Fruit Extracts', 'Zero Artificial Colors', 'Crisp Carbonation'],
       rating: 4.8,
       reviews: 1247,
@@ -43,7 +44,7 @@ const Products: React.FC = () => {
       id: 'citrus',
       name: 'Citrus Blend 6-Pack',
       flavor: 'Zesty Lightning Strike',
-      description: 'An electrifying fusion of premium citrus fruits that awakens your senses with every drop. This 6-pack warrior arsenal delivers a refreshing punch that energizes your entire being. [...]
+      description: 'An electrifying fusion of premium citrus fruits that awakens your senses with every drop. This 6-pack warrior arsenal delivers a refreshing punch that energizes your entire being.',
       price: 650,
       color: 'from-orange-500 to-yellow-400',
       image: 'https://raw.githubusercontent.com/Raghav-Luthra/the-gladiator-website/main/citrus.png',
@@ -58,11 +59,12 @@ const Products: React.FC = () => {
       id: 'cranberry',
       name: 'Cranberry Blast 6-Pack',
       flavor: 'Tart Power Surge',
-      description: 'A fierce and invigorating cranberry experience that commands attention. This 6-pack collection delivers an intense burst of tart sophistication with a smooth, satisfying finish. St[...]
+      description: 'A fierce and invigorating cranberry experience that commands attention. This 6-pack collection delivers an intense burst of tart sophistication with a smooth, satisfying finish.',
       price: 650,
       originalPrice: 1000,
       color: 'from-red-600 to-purple-500',
       icon: <Sparkles className="w-8 h-8" />,
+      image: 'https://raw.githubusercontent.com/Raghav-Luthra/the-gladiator-website/main/cranberry.png',
       features: ['Premium Cranberries', 'Antioxidant Rich', 'Bold Tartness', 'Smooth Finish'],
       rating: 4.9,
       reviews: 1563,
@@ -73,7 +75,6 @@ const Products: React.FC = () => {
   ];
 
   const selectedProductData = products.find(p => p.id === selectedProduct) || products[0];
-
 
   const handleOrderNow = (productId: string) => {
     setShowOutOfStock(productId);
@@ -129,7 +130,6 @@ const Products: React.FC = () => {
             <div
               className={`relative w-80 h-80 mx-auto bg-gradient-to-br ${selectedProductData.color} rounded-full flex items-center justify-center shadow-2xl`}
             >
-              {/* ✅ Show image if available, otherwise fallback to icon */}
               {selectedProductData.image ? (
                 <img
                   src={selectedProductData.image}
@@ -147,7 +147,7 @@ const Products: React.FC = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${selectedProductData.color} rounded-full blur-2xl opacity-50 animate-pulse`}
               ></div>
             </div>
-            
+              
             {/* Product Badge */}
             {selectedProductData.badge && (
               <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold">
@@ -233,7 +233,7 @@ const Products: React.FC = () => {
             <div className="relative">
               <button 
                 onClick={() => handleOrderNow(selectedProduct)}
-                className={`group relative w-full px-8 py-4 bg-gradient-to-r ${selectedProductData.color} rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-[...]
+                className={`group relative w-full px-8 py-4 bg-gradient-to-r ${selectedProductData.color} rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                   <ShoppingCart className="w-5 h-5" />
@@ -273,7 +273,7 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div
               key={product.id}
-              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ov[...]
+              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Product Badge */}
@@ -285,9 +285,17 @@ const Products: React.FC = () => {
 
               {/* Product Image Area */}
               <div className={`relative h-48 bg-gradient-to-br ${product.color} flex items-center justify-center`}>
-                <div className="text-white text-4xl group-hover:scale-110 transition-transform duration-300">
-                  {product.icon}
-                </div>
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-24 h-24 object-contain drop-shadow-xl"
+                  />
+                ) : (
+                  <div className="text-white text-4xl group-hover:scale-110 transition-transform duration-300">
+                    {product.icon}
+                  </div>
+                )}
                 <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
               </div>
 
@@ -346,7 +354,7 @@ const Products: React.FC = () => {
                 <div className="relative pt-4">
                   <button
                     onClick={() => handleOrderNow(product.id)}
-                    className={`group relative w-full px-6 py-3 bg-gradient-to-r ${product.color} rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`[...]
+                    className={`group relative w-full px-6 py-3 bg-gradient-to-r ${product.color} rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`}
                   >
                     <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                       <ShoppingCart className="w-4 h-4" />
@@ -420,7 +428,7 @@ const Products: React.FC = () => {
 
             <button
               onClick={() => handleOrderNow('bundle')}
-              className="relative group px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-bold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shad[...]
+              className="relative group px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-bold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shadow-xl"
             >
               <span className="relative z-10 flex items-center space-x-2 text-white">
                 <ShoppingCart className="w-5 h-5" />
