@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2Fsvg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22g[...]
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grid%22%20width%3D%2220%22%20height%3D%2220%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22m%2020%200%20l%200%2020%20m%20-20%200%20l%2020%200%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%220.5%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url%28%23grid%29%22%2F%3E%3C%2Fsvg%3E')] opacity-20"></div>
       
       {/* Animated Teal Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         {/* Brand Logo Placeholder */}
         <div className="mb-8 flex justify-center">
           <div className="relative group">
-            <div className="w-48 h-48 relative">{/* Increased from w-32 h-32 to w-48 h-48 */}
+            <div className="w-48 h-48 relative">
               <img 
                 src="/PHOTO-2025-09-01-20-56-59-removebg-preview.png" 
                 alt="The Gladiator Logo" 
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
           
           <button
             onClick={scrollToProducts}
-            className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-semibold text-lg transition-all duration-300 hover:[...]
+            className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-semibold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shadow-xl hover:shadow-teal-500/25 hover:-translate-y-1"
           >
             <span className="mr-2">DISCOVER FLAVORS</span>
             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
