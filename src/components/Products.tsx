@@ -126,12 +126,28 @@ const Products: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           {/* Product Visual */}
           <div className="relative">
-            <div className={`relative w-80 h-80 mx-auto bg-gradient-to-br ${selectedProductData.color} rounded-full flex items-center justify-center shadow-2xl`}>
-              <div className="text-white text-6xl">
-                {selectedProductData.icon}
-              </div>
-              <div className={`absolute inset-0 bg-gradient-to-br ${selectedProductData.color} rounded-full blur-2xl opacity-50 animate-pulse`}></div>
+            <div
+              className={`relative w-80 h-80 mx-auto bg-gradient-to-br ${selectedProductData.color} rounded-full flex items-center justify-center shadow-2xl`}
+            >
+              {/* ✅ Show image if available, otherwise fallback to icon */}
+              {selectedProductData.image ? (
+                <img
+                  src={selectedProductData.image}
+                  alt={selectedProductData.name}
+                  className="w-40 h-40 object-contain drop-shadow-xl"
+                />
+              ) : (
+                <div className="text-white text-6xl">
+                  {selectedProductData.icon}
+                </div>
+              )}
+
+              {/* Glow Effect */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${selectedProductData.color} rounded-full blur-2xl opacity-50 animate-pulse`}
+              ></div>
             </div>
+          </div>
             
             {/* Product Badge */}
             {selectedProductData.badge && (
