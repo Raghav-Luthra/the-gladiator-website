@@ -46,7 +46,7 @@ const Products: React.FC = () => {
       description: 'An electrifying fusion of premium citrus fruits that awakens your senses with every drop. This 6-pack warrior arsenal delivers a refreshing punch that energizes your entire being. Perfect for sharing the citrus fury with fellow warriors.',
       price: 650,
       color: 'from-orange-500 to-yellow-400',
-      icon: <Citrus className="w-8 h-8" />,
+      image: 'https://raw.githubusercontent.com/Raghav-Luthra/the-gladiator-website/main/citrus.png',
       features: ['Fresh Citrus Oils', 'Vitamin C Boost', 'Natural Tang', 'Invigorating Bubbles'],
       rating: 4.7,
       reviews: 892,
