@@ -76,6 +76,7 @@ const Products: React.FC = () => {
 
   const selectedProductData = products.find(p => p.id === selectedProduct) || products[0];
 
+  // Always show out of stock popup on Buy Now click
   const handleOrderNow = (productId: string) => {
     setShowOutOfStock(productId);
     setTimeout(() => setShowOutOfStock(null), 3000);
@@ -135,8 +136,13 @@ const Products: React.FC = () => {
                 <img
                   src={selectedProductData.image}
                   alt={selectedProductData.name}
-                  className="w-[32rem] h-[32rem] object-contain drop-shadow-xl opacity-90"
-                  style={{ opacity: 0.9, transition: 'opacity 0.3s' }}
+                  className="w-[32rem] h-[32rem] object-contain drop-shadow-2xl border-4 border-white rounded-2xl"
+                  style={{
+                    opacity: 1,
+                    filter: "drop-shadow(0 0 60px #ffffff55)",
+                    transition: "opacity 0.3s",
+                    background: "rgba(255,255,255,0.05)"
+                  }}
                 />
               ) : (
                 <div className="text-white text-9xl">
@@ -144,7 +150,12 @@ const Products: React.FC = () => {
                 </div>
               )}
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-black rounded-full blur-2xl opacity-50"></div>
+              <div className="absolute inset-0 pointer-events-none rounded-full"
+                style={{
+                  boxShadow: "0 0 80px 20px #fff3",
+                  borderRadius: "50%",
+                  zIndex: 0
+                }}></div>
             </div>
             {/* Product Badge */}
             {selectedProductData.badge && (
@@ -157,10 +168,10 @@ const Products: React.FC = () => {
           {/* Product Details */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-4xl md:text-5xl font-black font-orbitron mb-2 text-white">
+              <h3 className="text-4xl md:text-5xl font-black font-orbitron mb-2 text-white drop-shadow-lg">
                 {selectedProductData.name}
               </h3>
-              <p className="text-xl text-teal-400 font-semibold mb-4">
+              <p className="text-xl text-teal-400 font-semibold mb-4 drop-shadow">
                 {selectedProductData.flavor}
               </p>
               
@@ -242,7 +253,7 @@ const Products: React.FC = () => {
 
               {/* Out of Stock Message */}
               {showOutOfStock === selectedProduct && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse z-50">
                   <div className="flex items-center justify-center space-x-2">
                     <Package className="w-5 h-5" />
                     <span className="font-semibold">OUT OF STOCK</span>
@@ -287,24 +298,33 @@ const Products: React.FC = () => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-56 h-56 object-contain drop-shadow-xl opacity-90"
-                    style={{ opacity: 0.9, transition: 'opacity 0.3s' }}
+                    className="w-56 h-56 object-contain drop-shadow-2xl border-2 border-white rounded-2xl"
+                    style={{
+                      opacity: 1,
+                      filter: "drop-shadow(0 0 40px #fff5)",
+                      background: "rgba(255,255,255,0.05)"
+                    }}
                   />
                 ) : (
                   <div className="text-white text-7xl group-hover:scale-110 transition-transform duration-300">
                     {product.icon}
                   </div>
                 )}
-                <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{
+                    boxShadow: "0 0 60px 10px #fff2",
+                    borderRadius: "2rem",
+                    zIndex: 0
+                  }}></div>
               </div>
 
               {/* Product Info */}
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold font-orbitron text-white group-hover:text-teal-300 transition-colors duration-300">
+                  <h3 className="text-xl font-bold font-orbitron text-white group-hover:text-teal-300 transition-colors duration-300 drop-shadow">
                     {product.name}
                   </h3>
-                  <p className="text-teal-400 font-semibold text-sm">
+                  <p className="text-teal-400 font-semibold text-sm drop-shadow">
                     {product.flavor}
                   </p>
                 </div>
@@ -364,7 +384,7 @@ const Products: React.FC = () => {
 
                   {/* Out of Stock Popup */}
                   {showOutOfStock === product.id && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/95 backdrop-blur-sm text-white p-3 rounded-lg border border-red-400 z-20 animate-pulse">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/95 backdrop-blur-sm text-white p-3 rounded-lg border border-red-400 z-50 animate-pulse">
                       <div className="flex items-center justify-center space-x-2">
                         <Package className="w-5 h-4" />
                         <span className="font-semibold text-sm">OUT OF STOCK</span>
@@ -388,7 +408,7 @@ const Products: React.FC = () => {
             <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Truck className="w-8 h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Free Bundle Shipping</h3>
+            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">Free Bundle Shipping</h3>
             <p className="text-gray-400">Free shipping on all 6-pack bundles. Your warrior fuel delivered fast.</p>
           </div>
 
@@ -396,7 +416,7 @@ const Products: React.FC = () => {
             <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Shield className="w-8 h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">30-Day Guarantee</h3>
+            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">30-Day Guarantee</h3>
             <p className="text-gray-400">Not satisfied with your bundle? We'll refund your warrior investment.</p>
           </div>
 
@@ -404,7 +424,7 @@ const Products: React.FC = () => {
             <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Star className="w-8 h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Premium Quality</h3>
+            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">Premium Quality</h3>
             <p className="text-gray-400">Crafted with the finest ingredients for true warriors.</p>
           </div>
         </div>
@@ -412,7 +432,7 @@ const Products: React.FC = () => {
         {/* Ultimate Bundle Offer */}
         <div className="mt-20 bg-black rounded-3xl p-8 border border-teal-500/30">
           <div className="text-center">
-            <h3 className="text-3xl font-bold font-orbitron text-white mb-4">
+            <h3 className="text-3xl font-bold font-orbitron text-white mb-4 drop-shadow">
               ULTIMATE WARRIOR <span className="text-teal-400">ARSENAL</span>
             </h3>
             <p className="text-gray-300 mb-6">Get all three 6-pack flavors (18 bottles total) and save even more!</p>
@@ -438,7 +458,7 @@ const Products: React.FC = () => {
 
             {/* Bundle Out of Stock */}
             {showOutOfStock === 'bundle' && (
-              <div className="mt-4 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse">
+              <div className="mt-4 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse z-50">
                 <div className="flex items-center justify-center space-x-2">
                   <Package className="w-5 h-5" />
                   <span className="font-semibold">ULTIMATE ARSENAL TEMPORARILY OUT OF STOCK</span>
