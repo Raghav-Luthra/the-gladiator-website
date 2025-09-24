@@ -27,7 +27,7 @@ const Products: React.FC = () => {
       id: 'strawberry',
       name: 'Strawberry Fusion 6-Pack',
       flavor: 'Sweet Berry Explosion',
-      description: 'A luscious blend of wild strawberries and exotic fruits that delivers an explosive taste experience. This 6-pack bundle ensures you have enough warrior fuel to conquer any challenge. Every sip unleashes layers of berry goodness that builds to an unforgettable crescendo.',
+      description: 'A luscious blend of wild strawberries and exotic fruits that delivers an explosive taste experience. This 6-pack bundle ensures you have enough warrior fuel to conquer any challeng[...]
       price: 650,
       originalPrice: 1000,
       color: 'from-pink-600 to-red-500',
@@ -43,7 +43,7 @@ const Products: React.FC = () => {
       id: 'citrus',
       name: 'Citrus Blend 6-Pack',
       flavor: 'Zesty Lightning Strike',
-      description: 'An electrifying fusion of premium citrus fruits that awakens your senses with every drop. This 6-pack warrior arsenal delivers a refreshing punch that energizes your entire being. Perfect for sharing the citrus fury with fellow warriors.',
+      description: 'An electrifying fusion of premium citrus fruits that awakens your senses with every drop. This 6-pack warrior arsenal delivers a refreshing punch that energizes your entire being. [...]
       price: 650,
       color: 'from-orange-500 to-yellow-400',
       image: 'https://raw.githubusercontent.com/Raghav-Luthra/the-gladiator-website/main/citrus.png',
@@ -58,7 +58,7 @@ const Products: React.FC = () => {
       id: 'cranberry',
       name: 'Cranberry Blast 6-Pack',
       flavor: 'Tart Power Surge',
-      description: 'A fierce and invigorating cranberry experience that commands attention. This 6-pack collection delivers an intense burst of tart sophistication with a smooth, satisfying finish. Stock up on this limited edition warrior fuel.',
+      description: 'A fierce and invigorating cranberry experience that commands attention. This 6-pack collection delivers an intense burst of tart sophistication with a smooth, satisfying finish. St[...]
       price: 650,
       originalPrice: 1000,
       color: 'from-red-600 to-purple-500',
@@ -147,7 +147,6 @@ const Products: React.FC = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${selectedProductData.color} rounded-full blur-2xl opacity-50 animate-pulse`}
               ></div>
             </div>
-          </div>
             
             {/* Product Badge */}
             {selectedProductData.badge && (
@@ -234,7 +233,7 @@ const Products: React.FC = () => {
             <div className="relative">
               <button 
                 onClick={() => handleOrderNow(selectedProduct)}
-                className={`group relative w-full px-8 py-4 bg-gradient-to-r ${selectedProductData.color} rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden`}
+                className={`group relative w-full px-8 py-4 bg-gradient-to-r ${selectedProductData.color} rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-[...]
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                   <ShoppingCart className="w-5 h-5" />
@@ -274,7 +273,7 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div
               key={product.id}
-              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ov[...]
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Product Badge */}
@@ -347,7 +346,7 @@ const Products: React.FC = () => {
                 <div className="relative pt-4">
                   <button
                     onClick={() => handleOrderNow(product.id)}
-                    className={`group relative w-full px-6 py-3 bg-gradient-to-r ${product.color} rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`}
+                    className={`group relative w-full px-6 py-3 bg-gradient-to-r ${product.color} rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`[...]
                   >
                     <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                       <ShoppingCart className="w-4 h-4" />
@@ -360,7 +359,7 @@ const Products: React.FC = () => {
                   {showOutOfStock === product.id && (
                     <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/95 backdrop-blur-sm text-white p-3 rounded-lg border border-red-400 z-20 animate-pulse">
                       <div className="flex items-center justify-center space-x-2">
-                        <Package className="w-4 h-4" />
+                        <Package className="w-5 h-4" />
                         <span className="font-semibold text-sm">OUT OF STOCK</span>
                       </div>
                       <p className="text-xs mt-1 text-center opacity-90">
@@ -421,7 +420,7 @@ const Products: React.FC = () => {
 
             <button
               onClick={() => handleOrderNow('bundle')}
-              className="relative group px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-bold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shadow-xl hover:shadow-teal-500/25 hover:-translate-y-1 overflow-hidden"
+              className="relative group px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-bold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shad[...]
             >
               <span className="relative z-10 flex items-center space-x-2 text-white">
                 <ShoppingCart className="w-5 h-5" />
