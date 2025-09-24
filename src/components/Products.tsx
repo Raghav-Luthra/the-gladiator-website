@@ -129,16 +129,17 @@ const Products: React.FC = () => {
           {/* Product Visual */}
           <div className="relative">
             <div
-              className={`relative w-64 h-64 mx-auto bg-black rounded-full flex items-center justify-center shadow-2xl`}
+              className={`relative w-[32rem] h-[32rem] mx-auto bg-black rounded-full flex items-center justify-center shadow-2xl`}
             >
               {selectedProductData.image ? (
                 <img
                   src={selectedProductData.image}
                   alt={selectedProductData.name}
-                  className="w-64 h-64 object-contain drop-shadow-xl"
+                  className="w-[32rem] h-[32rem] object-contain drop-shadow-xl opacity-90"
+                  style={{ opacity: 0.9, transition: 'opacity 0.3s' }}
                 />
               ) : (
-                <div className="text-white text-8xl">
+                <div className="text-white text-9xl">
                   {selectedProductData.icon}
                 </div>
               )}
@@ -281,15 +282,16 @@ const Products: React.FC = () => {
               )}
 
               {/* Product Image Area */}
-              <div className="relative h-64 flex items-center justify-center bg-black">
+              <div className="relative h-96 flex items-center justify-center bg-black">
                 {product.image ? (
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-40 h-40 object-contain drop-shadow-xl"
+                    className="w-56 h-56 object-contain drop-shadow-xl opacity-90"
+                    style={{ opacity: 0.9, transition: 'opacity 0.3s' }}
                   />
                 ) : (
-                  <div className="text-white text-6xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-white text-7xl group-hover:scale-110 transition-transform duration-300">
                     {product.icon}
                   </div>
                 )}
