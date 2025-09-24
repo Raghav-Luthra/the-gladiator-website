@@ -91,11 +91,12 @@ const Products: React.FC = () => {
   };
 
   return (
-    <section id="products" className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="products" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-6 bg-gradient-to-r from-white to-teal-300 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-6 bg-clip-text text-transparent"
+            style={{ background: 'linear-gradient(to right, white, #2dd4bf)' }}>
             WARRIOR FLAVORS
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -111,13 +112,13 @@ const Products: React.FC = () => {
               onClick={() => setSelectedProduct(product.id)}
               className={`relative px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 selectedProduct === product.id
-                  ? `bg-gradient-to-r ${product.color} text-white shadow-lg scale-105`
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? `bg-black text-white shadow-lg scale-105 border border-teal-500`
+                  : 'bg-black text-gray-300 hover:bg-gray-900 hover:text-white'
               }`}
             >
               <span className="relative z-10">{product.name}</span>
               {selectedProduct === product.id && (
-                <div className={`absolute inset-0 bg-gradient-to-r ${product.color} rounded-full blur-lg opacity-30`}></div>
+                <div className="absolute inset-0 bg-black rounded-full blur-lg opacity-30"></div>
               )}
             </button>
           ))}
@@ -128,26 +129,22 @@ const Products: React.FC = () => {
           {/* Product Visual */}
           <div className="relative">
             <div
-              className={`relative w-80 h-80 mx-auto bg-gradient-to-br ${selectedProductData.color} rounded-full flex items-center justify-center shadow-2xl`}
+              className={`relative w-64 h-64 mx-auto bg-black rounded-full flex items-center justify-center shadow-2xl`}
             >
               {selectedProductData.image ? (
                 <img
                   src={selectedProductData.image}
                   alt={selectedProductData.name}
-                  className="w-40 h-40 object-contain drop-shadow-xl"
+                  className="w-64 h-64 object-contain drop-shadow-xl"
                 />
               ) : (
-                <div className="text-white text-6xl">
+                <div className="text-white text-8xl">
                   {selectedProductData.icon}
                 </div>
               )}
-
               {/* Glow Effect */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${selectedProductData.color} rounded-full blur-2xl opacity-50 animate-pulse`}
-              ></div>
+              <div className="absolute inset-0 bg-black rounded-full blur-2xl opacity-50"></div>
             </div>
-              
             {/* Product Badge */}
             {selectedProductData.badge && (
               <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold">
@@ -198,7 +195,7 @@ const Products: React.FC = () => {
               {/* Bundle Info */}
               <div className="mb-6">
                 <h4 className="text-lg font-bold text-white mb-3">Bundle Details</h4>
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-teal-500/20">
+                <div className="bg-black rounded-lg p-4 border border-teal-500/20">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <Package className="w-6 h-6 text-teal-400" />
@@ -233,7 +230,7 @@ const Products: React.FC = () => {
             <div className="relative">
               <button 
                 onClick={() => handleOrderNow(selectedProduct)}
-                className={`group relative w-full px-8 py-4 bg-gradient-to-r ${selectedProductData.color} rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                className={`group relative w-full px-8 py-4 bg-black rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                   <ShoppingCart className="w-5 h-5" />
@@ -273,7 +270,7 @@ const Products: React.FC = () => {
           {products.map((product, index) => (
             <div
               key={product.id}
-              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+              className="group relative bg-black rounded-2xl border border-gray-800 hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Product Badge */}
@@ -284,19 +281,19 @@ const Products: React.FC = () => {
               )}
 
               {/* Product Image Area */}
-              <div className={`relative h-48 bg-gradient-to-br ${product.color} flex items-center justify-center`}>
+              <div className="relative h-64 flex items-center justify-center bg-black">
                 {product.image ? (
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-24 h-24 object-contain drop-shadow-xl"
+                    className="w-40 h-40 object-contain drop-shadow-xl"
                   />
                 ) : (
-                  <div className="text-white text-4xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-white text-6xl group-hover:scale-110 transition-transform duration-300">
                     {product.icon}
                   </div>
                 )}
-                <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
               </div>
 
               {/* Product Info */}
@@ -331,7 +328,7 @@ const Products: React.FC = () => {
 
                 {/* Bundle Info */}
                 <div>
-                  <div className="bg-gray-800/30 rounded-lg p-3 border border-gray-700">
+                  <div className="bg-black rounded-lg p-3 border border-gray-700">
                     <div className="flex items-center space-x-2 mb-1">
                       <Package className="w-4 h-4 text-teal-400" />
                       <span className="text-white font-semibold text-sm">{product.bundle.count}-Pack Bundle</span>
@@ -354,7 +351,7 @@ const Products: React.FC = () => {
                 <div className="relative pt-4">
                   <button
                     onClick={() => handleOrderNow(product.id)}
-                    className={`group relative w-full px-6 py-3 bg-gradient-to-r ${product.color} rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`}
+                    className={`group relative w-full px-6 py-3 bg-black rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`}
                   >
                     <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                       <ShoppingCart className="w-4 h-4" />
@@ -378,7 +375,7 @@ const Products: React.FC = () => {
                 </div>
               </div>
 
-              <div className={`absolute inset-0 bg-gradient-to-br ${product.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+              <div className="absolute inset-0 bg-black rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
@@ -386,7 +383,7 @@ const Products: React.FC = () => {
         {/* Ecommerce Features */}
         <div className="mt-20 grid md:grid-cols-3 gap-8">
           <div className="text-center group">
-            <div className="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500/20 transition-colors duration-300">
+            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Truck className="w-8 h-8 text-teal-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Free Bundle Shipping</h3>
@@ -394,7 +391,7 @@ const Products: React.FC = () => {
           </div>
 
           <div className="text-center group">
-            <div className="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500/20 transition-colors duration-300">
+            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Shield className="w-8 h-8 text-teal-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">30-Day Guarantee</h3>
@@ -402,7 +399,7 @@ const Products: React.FC = () => {
           </div>
 
           <div className="text-center group">
-            <div className="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500/20 transition-colors duration-300">
+            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
               <Star className="w-8 h-8 text-teal-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Premium Quality</h3>
@@ -411,7 +408,7 @@ const Products: React.FC = () => {
         </div>
 
         {/* Ultimate Bundle Offer */}
-        <div className="mt-20 bg-gradient-to-r from-teal-600/20 to-teal-400/10 rounded-3xl p-8 border border-teal-500/30">
+        <div className="mt-20 bg-black rounded-3xl p-8 border border-teal-500/30">
           <div className="text-center">
             <h3 className="text-3xl font-bold font-orbitron text-white mb-4">
               ULTIMATE WARRIOR <span className="text-teal-400">ARSENAL</span>
@@ -428,7 +425,7 @@ const Products: React.FC = () => {
 
             <button
               onClick={() => handleOrderNow('bundle')}
-              className="relative group px-8 py-4 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-bold text-lg transition-all duration-300 hover:from-teal-500 hover:to-teal-400 hover:shadow-xl"
+              className="relative group px-8 py-4 bg-black rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl"
             >
               <span className="relative z-10 flex items-center space-x-2 text-white">
                 <ShoppingCart className="w-5 h-5" />
