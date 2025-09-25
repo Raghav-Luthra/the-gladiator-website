@@ -6,7 +6,6 @@ interface WelcomeAnimationProps {
 }
 
 const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
-  const [currentPhase, setCurrentPhase] = useState(0);
   const [showElements, setShowElements] = useState({
     name: false,
     subtitle: false,
@@ -17,17 +16,11 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
 
   useEffect(() => {
     const timeline = [
-      // Phase 0: Initial load
       { delay: 500, action: () => setShowElements(prev => ({ ...prev, logo: true })) },
-      // Phase 1: Show logo with glow
       { delay: 1000, action: () => setShowElements(prev => ({ ...prev, particles: true })) },
-      // Phase 2: Show particles
       { delay: 1500, action: () => setShowElements(prev => ({ ...prev, name: true })) },
-      // Phase 3: Show name with typewriter effect
       { delay: 2500, action: () => setShowElements(prev => ({ ...prev, subtitle: true })) },
-      // Phase 4: Show subtitle
       { delay: 4000, action: () => setShowElements(prev => ({ ...prev, fadeOut: true })) },
-      // Phase 5: Fade out and complete
       { delay: 5000, action: onComplete }
     ];
 
@@ -46,7 +39,7 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grid%22[...]
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grid%22%20width%3D%2260%22%20height%3D%2260%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M60%200H0V60%22%20fill%3D%22none%22%20stroke%3D%22%2315b8a6%22%20stroke-width%3D%220.5%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url(%23grid)%22/%3E%3C/svg%3E')]"></div>
         
         {/* Animated Orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -97,7 +90,7 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
               <Zap className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 -top-1 sm:-top-2 left-1/2 transform -translate-x-1/2" />
               <Target className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 top-1/2 -right-1 sm:-right-2 transform -translate-y-1/2" />
               <Crown className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2" />
-              {/* Removed Sword icon, as requested */}
+              {/* Sword icon removed as per request */}
             </div>
           </div>
         </div>
