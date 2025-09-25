@@ -92,26 +92,26 @@ const Products: React.FC = () => {
   };
 
   return (
-    <section id="products" className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="products" className="py-12 sm:py-16 md:py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-6 bg-clip-text text-transparent"
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black font-orbitron mb-4 sm:mb-6 bg-clip-text text-transparent"
             style={{ background: 'linear-gradient(to right, white, #2dd4bf)' }}>
             WARRIOR FLAVORS
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Three legendary flavors forged for those who refuse to settle for ordinary
           </p>
         </div>
 
         {/* Product Selector */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
           {products.map((product) => (
             <button
               key={product.id}
               onClick={() => setSelectedProduct(product.id)}
-              className={`relative px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 ${
                 selectedProduct === product.id
                   ? `bg-black text-white shadow-lg scale-105 border border-teal-500`
                   : 'bg-black text-gray-300 hover:bg-gray-900 hover:text-white'
@@ -126,17 +126,17 @@ const Products: React.FC = () => {
         </div>
 
         {/* Featured Product Display */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-10 sm:mb-20">
           {/* Product Visual */}
-          <div className="relative">
+          <div className="relative flex justify-center">
             <div
-              className={`relative w-[32rem] h-[32rem] mx-auto bg-black rounded-full flex items-center justify-center shadow-2xl`}
+              className={`relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square mx-auto bg-black rounded-full flex items-center justify-center shadow-2xl`}
             >
               {selectedProductData.image ? (
                 <img
                   src={selectedProductData.image}
                   alt={selectedProductData.name}
-                  className="w-[32rem] h-[32rem] object-contain drop-shadow-2xl border-4 border-white rounded-2xl"
+                  className="w-full h-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-contain drop-shadow-2xl border-4 border-white rounded-2xl"
                   style={{
                     opacity: 1,
                     filter: "drop-shadow(0 0 60px #ffffff55)",
@@ -145,7 +145,7 @@ const Products: React.FC = () => {
                   }}
                 />
               ) : (
-                <div className="text-white text-9xl">
+                <div className="text-white text-6xl sm:text-9xl">
                   {selectedProductData.icon}
                 </div>
               )}
@@ -159,66 +159,66 @@ const Products: React.FC = () => {
             </div>
             {/* Product Badge */}
             {selectedProductData.badge && (
-              <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-teal-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-bold">
                 {selectedProductData.badge}
               </div>
             )}
           </div>
 
           {/* Product Details */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h3 className="text-4xl md:text-5xl font-black font-orbitron mb-2 text-white drop-shadow-lg">
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-black font-orbitron mb-2 text-white drop-shadow-lg">
                 {selectedProductData.name}
               </h3>
-              <p className="text-xl text-teal-400 font-semibold mb-4 drop-shadow">
+              <p className="text-lg sm:text-xl text-teal-400 font-semibold mb-3 sm:mb-4 drop-shadow">
                 {selectedProductData.flavor}
               </p>
               
               {/* Rating */}
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-2 mb-3 sm:mb-4">
                 <div className="flex space-x-1">
                   {renderStars(selectedProductData.rating)}
                 </div>
-                <span className="text-gray-300 text-sm">
+                <span className="text-gray-300 text-xs sm:text-sm">
                   {selectedProductData.rating} ({selectedProductData.reviews} reviews)
                 </span>
               </div>
 
-              <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6">
                 {selectedProductData.description}
               </p>
 
               {/* Price */}
-              <div className="flex items-center space-x-3 mb-6">
-                <span className="text-3xl font-bold text-white">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+                <span className="text-2xl sm:text-3xl font-bold text-white">
                   ₹{selectedProductData.price}
                 </span>
                 {selectedProductData.originalPrice && (
-                  <span className="text-xl text-gray-500 line-through">
+                  <span className="text-lg sm:text-xl text-gray-500 line-through">
                     ₹{selectedProductData.originalPrice}
                   </span>
                 )}
-                <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                <span className="bg-red-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-bold">
                   {selectedProductData.bundle.savings}
                 </span>
               </div>
 
               {/* Bundle Info */}
-              <div className="mb-6">
-                <h4 className="text-lg font-bold text-white mb-3">Bundle Details</h4>
-                <div className="bg-black rounded-lg p-4 border border-teal-500/20">
+              <div className="mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3">Bundle Details</h4>
+                <div className="bg-black rounded-lg p-3 sm:p-4 border border-teal-500/20">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <Package className="w-6 h-6 text-teal-400" />
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <Package className="w-5 h-5 sm:w-6 sm:h-6 text-teal-400" />
                       <div>
                         <p className="text-white font-semibold">{selectedProductData.bundle.count} Bottles</p>
-                        <p className="text-gray-400 text-sm">355ml each (2.13L total)</p>
+                        <p className="text-gray-400 text-xs sm:text-sm">355ml each (2.13L total)</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="text-teal-400 font-bold">{selectedProductData.bundle.savings}</p>
-                      <p className="text-gray-400 text-sm">vs individual</p>
+                      <p className="text-gray-400 text-xs sm:text-sm">vs individual</p>
                     </div>
                   </div>
                 </div>
@@ -227,12 +227,12 @@ const Products: React.FC = () => {
 
             {/* Features */}
             <div>
-              <h4 className="text-xl font-bold text-white mb-4">FLAVOR PROFILE</h4>
-              <div className="grid grid-cols-2 gap-3">
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4">FLAVOR PROFILE</h4>
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {selectedProductData.features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                    <span className="text-gray-300">{feature}</span>
+                    <span className="text-gray-300 text-xs sm:text-base">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -242,7 +242,7 @@ const Products: React.FC = () => {
             <div className="relative">
               <button 
                 onClick={() => handleOrderNow(selectedProduct)}
-                className={`group relative w-full px-8 py-4 bg-black rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                className="group relative w-full px-6 sm:px-8 py-3 sm:py-4 bg-black rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                   <ShoppingCart className="w-5 h-5" />
@@ -253,32 +253,32 @@ const Products: React.FC = () => {
 
               {/* Out of Stock Message */}
               {showOutOfStock === selectedProduct && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse z-50">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/90 backdrop-blur-sm text-white p-3 sm:p-4 rounded-lg border border-red-400 animate-pulse z-50">
                   <div className="flex items-center justify-center space-x-2">
                     <Package className="w-5 h-5" />
                     <span className="font-semibold">OUT OF STOCK</span>
                   </div>
-                  <p className="text-sm mt-1 text-center">This 6-pack warrior bundle is currently conquering new territories. Check back soon!</p>
+                  <p className="text-xs sm:text-sm mt-1 text-center">This 6-pack warrior bundle is currently conquering new territories. Check back soon!</p>
                 </div>
               )}
             </div>
 
             {/* Product Benefits */}
-            <div className="flex items-center justify-center space-x-8 pt-6 border-t border-gray-800">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 pt-4 sm:pt-6 border-t border-gray-800">
               <div className="flex items-center space-x-2 text-gray-400">
                 <Truck className="w-4 h-4" />
-                <span className="text-sm">Free Shipping on Bundles</span>
+                <span className="text-xs sm:text-sm">Free Shipping on Bundles</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <Shield className="w-4 h-4" />
-                <span className="text-sm">30-Day Guarantee</span>
+                <span className="text-xs sm:text-sm">30-Day Guarantee</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* All Products Grid - Ecommerce Style */}
-        <div className="grid md:grid-cols-3 gap-8 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-20">
           {products.map((product, index) => (
             <div
               key={product.id}
@@ -287,18 +287,18 @@ const Products: React.FC = () => {
             >
               {/* Product Badge */}
               {product.badge && (
-                <div className="absolute top-4 right-4 z-10 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 bg-teal-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold">
                   {product.badge}
                 </div>
               )}
 
               {/* Product Image Area */}
-              <div className="relative h-96 flex items-center justify-center bg-black">
+              <div className="relative h-48 sm:h-64 flex items-center justify-center bg-black">
                 {product.image ? (
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-56 h-56 object-contain drop-shadow-2xl border-2 border-white rounded-2xl"
+                    className="w-32 sm:w-56 h-32 sm:h-56 object-contain drop-shadow-2xl border-2 border-white rounded-2xl"
                     style={{
                       opacity: 1,
                       filter: "drop-shadow(0 0 40px #fff5)",
@@ -306,7 +306,7 @@ const Products: React.FC = () => {
                     }}
                   />
                 ) : (
-                  <div className="text-white text-7xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-white text-5xl sm:text-7xl group-hover:scale-110 transition-transform duration-300">
                     {product.icon}
                   </div>
                 )}
@@ -319,12 +319,12 @@ const Products: React.FC = () => {
               </div>
 
               {/* Product Info */}
-              <div className="p-6 space-y-4">
+              <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold font-orbitron text-white group-hover:text-teal-300 transition-colors duration-300 drop-shadow">
+                  <h3 className="text-lg sm:text-xl font-bold font-orbitron text-white group-hover:text-teal-300 transition-colors duration-300 drop-shadow">
                     {product.name}
                   </h3>
-                  <p className="text-teal-400 font-semibold text-sm drop-shadow">
+                  <p className="text-teal-400 font-semibold text-xs sm:text-sm drop-shadow">
                     {product.flavor}
                   </p>
                 </div>
@@ -334,46 +334,46 @@ const Products: React.FC = () => {
                   <div className="flex space-x-1">
                     {renderStars(product.rating)}
                   </div>
-                  <span className="text-gray-400 text-sm">({product.reviews})</span>
+                  <span className="text-gray-400 text-xs sm:text-sm">({product.reviews})</span>
                 </div>
 
                 {/* Price */}
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl font-bold text-white">₹{product.price}</span>
+                  <span className="text-xl sm:text-2xl font-bold text-white">₹{product.price}</span>
                   {product.originalPrice && (
-                    <span className="text-gray-500 line-through">₹{product.originalPrice}</span>
+                    <span className="text-gray-500 line-through text-xs sm:text-base">₹{product.originalPrice}</span>
                   )}
-                  <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                  <span className="bg-red-500 text-white px-1.5 sm:px-2 py-0.5 rounded text-xs font-bold">
                     {product.bundle.savings}
                   </span>
                 </div>
 
                 {/* Bundle Info */}
                 <div>
-                  <div className="bg-black rounded-lg p-3 border border-gray-700">
+                  <div className="bg-black rounded-lg p-2 sm:p-3 border border-gray-700">
                     <div className="flex items-center space-x-2 mb-1">
                       <Package className="w-4 h-4 text-teal-400" />
-                      <span className="text-white font-semibold text-sm">{product.bundle.count}-Pack Bundle</span>
+                      <span className="text-white font-semibold text-xs sm:text-sm">{product.bundle.count}-Pack Bundle</span>
                     </div>
                     <p className="text-gray-400 text-xs">355ml × {product.bundle.count} = 2.13L total</p>
                   </div>
                 </div>
 
                 {/* Quick Features */}
-                <div className="space-y-1">
+                <div className="space-y-0.5 sm:space-y-1">
                   {product.features.slice(0, 2).map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <div className="w-1.5 h-1.5 bg-teal-400 rounded-full"></div>
-                      <span className="text-gray-400 text-sm">{feature}</span>
+                      <span className="text-gray-400 text-xs sm:text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Order Button */}
-                <div className="relative pt-4">
+                <div className="relative pt-3 sm:pt-4">
                   <button
                     onClick={() => handleOrderNow(product.id)}
-                    className={`group relative w-full px-6 py-3 bg-black rounded-lg font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden`}
+                    className="group relative w-full px-4 sm:px-6 py-2 sm:py-3 bg-black rounded-lg font-bold text-sm sm:text-base transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center space-x-2 text-white">
                       <ShoppingCart className="w-4 h-4" />
@@ -384,10 +384,10 @@ const Products: React.FC = () => {
 
                   {/* Out of Stock Popup */}
                   {showOutOfStock === product.id && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/95 backdrop-blur-sm text-white p-3 rounded-lg border border-red-400 z-50 animate-pulse">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-red-500/95 backdrop-blur-sm text-white p-2 sm:p-3 rounded-lg border border-red-400 z-50 animate-pulse">
                       <div className="flex items-center justify-center space-x-2">
                         <Package className="w-5 h-4" />
-                        <span className="font-semibold text-sm">OUT OF STOCK</span>
+                        <span className="font-semibold text-xs sm:text-sm">OUT OF STOCK</span>
                       </div>
                       <p className="text-xs mt-1 text-center opacity-90">
                         This 6-pack bundle is conquering new territories!
@@ -403,51 +403,51 @@ const Products: React.FC = () => {
         </div>
 
         {/* Ecommerce Features */}
-        <div className="mt-20 grid md:grid-cols-3 gap-8">
+        <div className="mt-10 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           <div className="text-center group">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
-              <Truck className="w-8 h-8 text-teal-400" />
+            <div className="w-12 sm:w-16 h-12 sm:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-gray-900 transition-colors duration-300">
+              <Truck className="w-6 sm:w-8 h-6 sm:h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">Free Bundle Shipping</h3>
-            <p className="text-gray-400">Free shipping on all 6-pack bundles. Your warrior fuel delivered fast.</p>
+            <h3 className="text-base sm:text-xl font-bold text-white mb-1 sm:mb-2 drop-shadow">Free Bundle Shipping</h3>
+            <p className="text-gray-400 text-xs sm:text-base">Free shipping on all 6-pack bundles. Your warrior fuel delivered fast.</p>
           </div>
 
           <div className="text-center group">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
-              <Shield className="w-8 h-8 text-teal-400" />
+            <div className="w-12 sm:w-16 h-12 sm:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-gray-900 transition-colors duration-300">
+              <Shield className="w-6 sm:w-8 h-6 sm:h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">30-Day Guarantee</h3>
-            <p className="text-gray-400">Not satisfied with your bundle? We'll refund your warrior investment.</p>
+            <h3 className="text-base sm:text-xl font-bold text-white mb-1 sm:mb-2 drop-shadow">30-Day Guarantee</h3>
+            <p className="text-gray-400 text-xs sm:text-base">Not satisfied with your bundle? We'll refund your warrior investment.</p>
           </div>
 
           <div className="text-center group">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-900 transition-colors duration-300">
-              <Star className="w-8 h-8 text-teal-400" />
+            <div className="w-12 sm:w-16 h-12 sm:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-gray-900 transition-colors duration-300">
+              <Star className="w-6 sm:w-8 h-6 sm:h-8 text-teal-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 drop-shadow">Premium Quality</h3>
-            <p className="text-gray-400">Crafted with the finest ingredients for true warriors.</p>
+            <h3 className="text-base sm:text-xl font-bold text-white mb-1 sm:mb-2 drop-shadow">Premium Quality</h3>
+            <p className="text-gray-400 text-xs sm:text-base">Crafted with the finest ingredients for true warriors.</p>
           </div>
         </div>
 
         {/* Ultimate Bundle Offer */}
-        <div className="mt-20 bg-black rounded-3xl p-8 border border-teal-500/30">
+        <div className="mt-10 sm:mt-20 bg-black rounded-3xl p-5 sm:p-8 border border-teal-500/30">
           <div className="text-center">
-            <h3 className="text-3xl font-bold font-orbitron text-white mb-4 drop-shadow">
+            <h3 className="text-2xl sm:text-3xl font-bold font-orbitron text-white mb-3 sm:mb-4 drop-shadow">
               ULTIMATE WARRIOR <span className="text-teal-400">ARSENAL</span>
             </h3>
-            <p className="text-gray-300 mb-6">Get all three 6-pack flavors (18 bottles total) and save even more!</p>
+            <p className="text-gray-300 mb-4 sm:mb-6">Get all three 6-pack flavors (18 bottles total) and save even more!</p>
             
-            <div className="flex items-center justify-center space-x-4 mb-6">
-              <span className="text-3xl font-bold text-white">₹1800</span>
-              <span className="text-xl text-gray-500 line-through">₹3000</span>
-              <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 mb-4 sm:mb-6">
+              <span className="text-2xl sm:text-3xl font-bold text-white">₹1800</span>
+              <span className="text-lg sm:text-xl text-gray-500 line-through">₹3000</span>
+              <span className="bg-red-500 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-bold">
                 SAVE ₹1200
               </span>
             </div>
 
             <button
               onClick={() => handleOrderNow('bundle')}
-              className="relative group px-8 py-4 bg-black rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl"
+              className="relative group px-6 sm:px-8 py-3 sm:py-4 bg-black rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-xl"
             >
               <span className="relative z-10 flex items-center space-x-2 text-white">
                 <ShoppingCart className="w-5 h-5" />
@@ -458,12 +458,12 @@ const Products: React.FC = () => {
 
             {/* Bundle Out of Stock */}
             {showOutOfStock === 'bundle' && (
-              <div className="mt-4 bg-red-500/90 backdrop-blur-sm text-white p-4 rounded-lg border border-red-400 animate-pulse z-50">
+              <div className="mt-3 sm:mt-4 bg-red-500/90 backdrop-blur-sm text-white p-3 sm:p-4 rounded-lg border border-red-400 animate-pulse z-50">
                 <div className="flex items-center justify-center space-x-2">
                   <Package className="w-5 h-5" />
-                  <span className="font-semibold">ULTIMATE ARSENAL TEMPORARILY OUT OF STOCK</span>
+                  <span className="font-semibold text-xs sm:text-base">ULTIMATE ARSENAL TEMPORARILY OUT OF STOCK</span>
                 </div>
-                <p className="text-sm mt-1">Our warriors are restocking the ultimate arsenal. Individual 6-packs available soon!</p>
+                <p className="text-xs sm:text-sm mt-1">Our warriors are restocking the ultimate arsenal. Individual 6-packs available soon!</p>
               </div>
             )}
           </div>
