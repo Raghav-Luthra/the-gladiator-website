@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sword, Zap, Target, Crown } from 'lucide-react';
+import { Zap, Target, Crown } from 'lucide-react';
 
 interface WelcomeAnimationProps {
   onComplete: () => void;
@@ -46,7 +46,7 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grid%22%20width%3D%2260%22%20height%3D%2260%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22m%2060%200%20l%200%2060%20m%20-60%200%20l%2060%200%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%220.5%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url(%23grid)%22/%3E%3C/svg%3E')] opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22grid%22[...]
         
         {/* Animated Orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -80,7 +80,15 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
         }`}>
           <div className="relative group">
             <div className="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center shadow-2xl mx-auto">
-              <Sword className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 text-white animate-pulse" />
+              {/* Replacing Sword icon with "The Soda Company" text, keeping theme */}
+              <span
+                className="text-white text-xl sm:text-2xl md:text-3xl font-extrabold font-orbitron tracking-widest drop-shadow-lg"
+                style={{
+                  letterSpacing: '0.18em'
+                }}
+              >
+                The Soda Company
+              </span>
             </div>
             <div className="absolute inset-0 bg-teal-400/30 rounded-full blur-2xl animate-pulse"></div>
             
@@ -89,7 +97,7 @@ const WelcomeAnimation: React.FC<WelcomeAnimationProps> = ({ onComplete }) => {
               <Zap className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 -top-1 sm:-top-2 left-1/2 transform -translate-x-1/2" />
               <Target className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 top-1/2 -right-1 sm:-right-2 transform -translate-y-1/2" />
               <Crown className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2" />
-              <Sword className="absolute w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-teal-400 top-1/2 -left-1 sm:-left-2 transform -translate-y-1/2" />
+              {/* Removed Sword icon, as requested */}
             </div>
           </div>
         </div>
