@@ -96,8 +96,7 @@ const Products: React.FC = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black font-orbitron mb-4 sm:mb-6 bg-clip-text text-transparent"
-            style={{ background: 'linear-gradient(to right, white, #2dd4bf)' }}>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black font-orbitron mb-4 sm:mb-6 bg-gradient-to-r from-white to-teal-400 bg-clip-text text-transparent">
             WARRIOR FLAVORS
           </h2>
           <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
