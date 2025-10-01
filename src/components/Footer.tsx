@@ -14,12 +14,9 @@ const Footer: React.FC = () => {
     company: [
       { name: 'About Us', href: '/about' },
       { name: 'Our Story', href: '/about' },
-      { name: 'Careers', href: '#' },
       { name: 'Press Kit', href: '#' }
     ],
     support: [
-      { name: 'Contact Us', href: '#contact' },
-      { name: 'Store Locator', href: '#' },
       { name: 'FAQ', href: '#' },
       { name: 'Nutrition Info', href: '#' }
     ],
@@ -131,28 +128,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-16 pt-12 border-t border-gray-800">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold font-orbitron text-white mb-4">
-              JOIN THE <span className="text-teal-400">WARRIOR LEGION</span>
-            </h3>
-            <p className="text-gray-400 mb-8">
-              Get exclusive access to new flavors, warrior events, and battle-tested recipes.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your warrior email"
-                className="flex-1 px-6 py-3 bg-gray-900 border border-gray-700 rounded-full text-white placeholder-gray-500 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
-              />
-              <button className="px-8 py-3 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full font-semibold hover:from-teal-500 hover:to-teal-400 hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 text-white">
-                ENLIST
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar */}
